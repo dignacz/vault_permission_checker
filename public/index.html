@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault Permission Checker</title>
+</head>
+<body>
+    <h2>Vault Permission Checker</h2>
+    <form id="apiForm">
+        <label for="sessionId">Session ID:</label>
+        <input type="text" id="sessionId" name="sessionId" required>
+        <br><br>
+
+        <label for="dns">DNS:</label>
+        <input type="text" id="dns" name="dns" required>
+        <br><br>
+
+        <label for="apiVersion">API Version:</label>
+        <select id="apiVersion" name="apiVersion" required>
+            <option value="v24.2">v24.2</option>
+            <option value="v24.1">v24.1</option>
+        </select>
+        <br><br>
+
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" name="userId" required>
+        <br><br>
+
+        <button type="submit">Get Permissions</button>
+    </form>
+
+    <label for="objectNames">Select Object:</label>
+<select id="objectNames">
+    <option value="">-- Select an Object --</option>
+</select>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
