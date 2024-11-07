@@ -30,13 +30,34 @@
         <button type="submit">Get Permissions</button>
     </form>
 
+    <!-- Dropdown to select an object -->
     <div>
-         <!-- Dropdown for Object Names -->
-    <select id="objectNames" onchange="populateTable()">
-        <option value="">-- Select an Object --</option>
-    </select>
+        <label for="objectNames">Select an Object:</label>
+        <select id="objectNames">
+            <option value="">-- Select an Object --</option>
+            <!-- Options populated dynamically by JavaScript -->
+        </select>
+    </div>
 
-    <!-- Table for Field Names and Permissions -->
+    <!-- Object Permissions Table -->
+    <h2>Object Permissions</h2>
+    <table id="objectTable" border="1">
+        <thead>
+            <tr>
+                <th>Object Types</th>
+                <th>Read</th>
+                <th>Create</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows populated dynamically by JavaScript -->
+        </tbody>
+    </table>
+
+    <!-- Field Permissions Table -->
+    <h2>Field Permissions</h2>
     <table id="fieldsTable" border="1">
         <thead>
             <tr>
@@ -46,10 +67,10 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Rows will be generated here -->
+            <!-- Rows populated dynamically by JavaScript -->
         </tbody>
     </table>
-    </div>
+
 
     <script src="js/script.js"></script>
 </body>
