@@ -1,6 +1,14 @@
 document.getElementById('apiForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
+    // Get the loading icon and submit button elements
+    const loadingIcon = document.getElementById('loadingIcon');
+    const submitButton = document.getElementById('submitButton');
+
+    // Show the loading icon and disable the submit button
+    loadingIcon.style.display = 'inline';
+    submitButton.disabled = true;
+
     // Get values from the form
     const sessionId = document.getElementById('sessionId').value;
     const dns = document.getElementById('dns').value;
@@ -163,5 +171,67 @@ document.getElementById('apiForm').addEventListener('submit', async function(eve
 
     } catch (error) {
         console.error('Error:', error);
+    }
+
+
+    //USER DATA
+
+    try {
+        // Send a POST request to the server to get the user details
+        const userResponse = await fetch('/api/getUserDetails', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ sessionId, dns, apiVersion, userId })  // Send the userId in the request body
+        });
+
+        // Check if the response is successful
+        if (!userResponse.ok) {
+            throw new Error(`HTTP error! Status: ${userResponse.status}`);
+        }
+
+        // Parse the JSON response
+        const userData = await userResponse.json();
+        console.log('Received User Data:', userData);
+
+        // Get the table body element
+        const userTableBody = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+
+        // Clear any existing data in the table
+        userTableBody.innerHTML = '';
+
+        // Create a new row for the user data
+        const row = document.createElement('tr');
+
+        // Full Name Cell
+        const fullNameCell = document.createElement('td');
+        fullNameCell.textContent = userData.fullName || 'N/A';
+        row.appendChild(fullNameCell);
+
+        // Username Cell
+        const usernameCell = document.createElement('td');
+        usernameCell.textContent = userData.username || 'N/A';
+        row.appendChild(usernameCell);
+
+        // User Email Cell
+        const emailCell = document.createElement('td');
+        emailCell.textContent = userData.email || 'N/A';
+        row.appendChild(emailCell);
+
+        // Security Profile Cell
+        const securityProfileCell = document.createElement('td');
+        securityProfileCell.textContent = userData.securityProfile || 'N/A';
+        row.appendChild(securityProfileCell);
+
+        // Append the row to the table body
+        userTableBody.appendChild(row);
+
+    } catch (error) {
+        console.error('Error:', error);
+    } finally {
+        // Hide the loading icon and re-enable the submit button
+        loadingIcon.style.display = 'none';
+        submitButton.disabled = false;
     }
 });

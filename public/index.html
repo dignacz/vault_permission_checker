@@ -27,8 +27,28 @@
         <input type="text" id="userId" name="userId" required>
         <br><br>
 
-        <button type="submit">Get Permissions</button>
+        <button type="submit" id="submitButton">Get Permissions</button>
+        <span id="loadingIcon" style="display: none; margin-left: 10px;">
+            <img src="images/loading-gif.gif" style="width: 20px;">
+        </span>
     </form>
+
+    <div>
+        <!-- User Details Table -->
+<table id="userTable" border="1">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Username</th>
+            <th>User Email</th>
+            <th>Security Profile</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Data will be populated here -->
+    </tbody>
+</table>
+    </div>
 
     <!-- Dropdown to select an object -->
     <div>
