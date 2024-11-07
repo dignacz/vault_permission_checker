@@ -229,9 +229,5 @@ document.getElementById('apiForm').addEventListener('submit', async function(eve
 
     } catch (error) {
         console.error('Error:', error);
-    } finally {
-        // Hide the loading icon and re-enable the submit button
-        loadingIcon.style.display = 'none';
-        submitButton.disabled = false;
-    }
+    } 
 });
