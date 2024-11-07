@@ -30,10 +30,26 @@
         <button type="submit">Get Permissions</button>
     </form>
 
-    <label for="objectNames">Select Object:</label>
-<select id="objectNames">
-    <option value="">-- Select an Object --</option>
-</select>
+    <div>
+         <!-- Dropdown for Object Names -->
+    <select id="objectNames" onchange="populateTable()">
+        <option value="">-- Select an Object --</option>
+    </select>
+
+    <!-- Table for Field Names and Permissions -->
+    <table id="fieldsTable" border="1">
+        <thead>
+            <tr>
+                <th>Field Name</th>
+                <th>Read</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be generated here -->
+        </tbody>
+    </table>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
