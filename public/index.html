@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Vault Permission Checker</title>
 </head>
 <body>
@@ -20,38 +21,35 @@
         <select id="apiVersion" name="apiVersion" required>
             <option value="v24.2">v24.2</option>
             <option value="v24.1">v24.1</option>
+            <option value="v24.1">v23.3</option>
+            <option value="v24.1">v23.2</option>
+            <option value="v24.1">v23.1</option>
+            <option value="v24.1">v22.3</option>
+            <option value="v24.1">v22.2</option>
+            <option value="v24.1">v22.1</option>
         </select>
         <br><br>
 
         <label for="userId">User ID:</label>
         <input type="text" id="userId" name="userId" required>
+
+        <label for="userIdCompare">User ID 2 to compare (optional):</label>
+        <input type="text" id="userIdCompare" name="userIdCompare">
         <br><br>
 
         <button type="submit" id="submitButton">Get Permissions</button>
         <span id="loadingIcon" style="display: none; margin-left: 10px;">
             <img src="images/loading-gif.gif" style="width: 20px;">
         </span>
+
+        <button type="submit" id="submitButtonCompare">Compare Permissions</button>
+        <span id="loadingIconCompare" style="display: none; margin-left: 10px;">
+            <img src="images/loading-gif.gif" style="width: 20px;">
+        </span>
     </form>
 
-    <div>
-        <!-- User Details Table -->
-<table id="userTable" border="1">
-    <thead>
-        <tr>
-            <th>Full Name</th>
-            <th>Username</th>
-            <th>User Email</th>
-            <th>Security Profile</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Data will be populated here -->
-    </tbody>
-</table>
-    </div>
-
-    <!-- Dropdown to select an object -->
-    <div>
+     <!-- Dropdown to select an object -->
+     <div>
         <label for="objectNames">Select an Object:</label>
         <select id="objectNames">
             <option value="">-- Select an Object --</option>
@@ -59,37 +57,110 @@
         </select>
     </div>
 
-    <!-- Object Permissions Table -->
-    <h2>Object Permissions</h2>
-    <table id="objectTable" border="1">
-        <thead>
-            <tr>
-                <th>Object Types</th>
-                <th>Read</th>
-                <th>Create</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Rows populated dynamically by JavaScript -->
-        </tbody>
-    </table>
-
-    <!-- Field Permissions Table -->
-    <h2>Field Permissions</h2>
-    <table id="fieldsTable" border="1">
-        <thead>
-            <tr>
-                <th>Field Name</th>
-                <th>Read</th>
-                <th>Edit</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Rows populated dynamically by JavaScript -->
-        </tbody>
-    </table>
+    <div class="table-container">
+        <!-- First Table -->
+        <div id="firstTable">
+            <!-- User Details Table -->
+            <h2>User Info</h2>
+            <table id="userTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Username</th>
+                        <th>User Email</th>
+                        <th>Security Profile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+    
+            <!-- Object Permissions Table -->
+            <h2>Object Permissions</h2>
+            <table id="objectTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Object Types</th>
+                        <th>Read</th>
+                        <th>Create</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows populated dynamically by JavaScript -->
+                </tbody>
+            </table>
+    
+            <!-- Field Permissions Table -->
+            <h2>Field Permissions</h2>
+            <table id="fieldsTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Field Name</th>
+                        <th>Read</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows populated dynamically by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    
+        <!-- Compare Table -->
+        <div id="compareTable">
+            <!-- User Details Table -->
+            <h2>Compared User Info</h2>
+            <table id="userCompareTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Username</th>
+                        <th>User Email</th>
+                        <th>Security Profile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+    
+            <!-- Object Permissions Comparison Table -->
+            <h2>Object Permissions Comparison</h2>
+            <table id="objectCompareTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Object Types</th>
+                        <th>Read</th>
+                        <th>Create</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows populated dynamically by JavaScript -->
+                </tbody>
+            </table>
+    
+            <!-- Field Permissions Comparison Table -->
+            <h2>Field Permissions Comparison</h2>
+            <table id="fieldsCompareTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Field Name</th>
+                        <th>Read</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows populated dynamically by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
 
 
     <script src="js/script.js"></script>
