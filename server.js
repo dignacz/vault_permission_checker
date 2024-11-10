@@ -15,6 +15,21 @@ app.use(express.static(path.join(__dirname, "public")));
 // Parse JSON bodies
 app.use(express.json());
 
+//Redirect to Permission check Page
+app.get("/permission-check", (req, res) => {
+
+  // Send the user-permissions.html file
+  res.sendFile(path.join(__dirname, 'public', 'user-permissions.html'));
+});
+
+//Redirect to Permission check Page
+app.get("/comparison-check", (req, res) => {
+
+  // Send the user-permissions.html file
+  res.sendFile(path.join(__dirname, 'public', 'compare-user-permissions.html'));
+});
+
+
 // Proxy API endpoint
 app.post("/api/proxy", async (req, res) => {
   const { sessionId, dns, apiVersion, userId } = req.body;

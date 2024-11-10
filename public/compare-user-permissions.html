@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>permission-checker-home-page-compare-table</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css">
+    <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div>
+        <div class="background-color">
+            <div id="firstTable" class="container div-center-block mb-5">
+                <h1 class="h5">User Info</h1>
+                <div class="table-responsive" id="userTable">
+                    <table class="table brand-color">
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>User Name</th>
+                                <th>Email</th>
+                                <th>Security Profile</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="compareTable" class="container div-center-block mb-5 m-t-0-override">
+                <h1 class="h5">Compared User Info</h1>
+                <div class="table-responsive" id="userCompareTable">
+                    <table class="table brand-color">
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>User Name</th>
+                                <th>Email</th>
+                                <th>Security Profile</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="mb-5"><label class="form-label" for="objectNames">Select an Object</label><select id="objectNames" class="drop-down-margin-left">
+                <optgroup label="Objects List">
+                    <option value="" selected="">-- Select an Object --</option>
+                </optgroup>
+            </select></div>
+            <div>
+                <div class="row">
+                    <div class="col">
+                        <div>
+                            <div class="container mb-5">
+                                <h1 class="h5">Object-Level Permissions</h1>
+                                <div class="table-responsive" id="objectTable">
+                                    <table class="table brand-color">
+                                        <thead>
+                                            <tr>
+                                                <th>Object Types</th>
+                                                <th>Read</th>
+                                                <th>Create</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="container mb-5">
+                                <h1 class="h5">Field-Level Permissions</h1>
+                                <div class="table-responsive" id="fieldsTable">
+                                    <table class="table brand-color">
+                                        <thead>
+                                            <tr>
+                                                <th>Field Name</th>
+                                                <th>Read</th>
+                                                <th>Edit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div>
+                            <div class="container mb-5">
+                                <h1 class="h5">Object-Level Permissions Comparison</h1>
+                                <div class="table-responsive" id="objectCompareTable">
+                                    <table class="table brand-color">
+                                        <thead>
+                                            <tr>
+                                                <th>Object Types</th>
+                                                <th>Read</th>
+                                                <th>Create</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="container mb-5">
+                                <h1 class="h5">Field-Level Permissions Comparison</h1>
+                                <div class="table-responsive" id="fieldsCompareTable">
+                                    <table class="table brand-color">
+                                        <thead>
+                                            <tr>
+                                                <th>Field Name</th>
+                                                <th>Read</th>
+                                                <th>Edit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="module" src="assets/js/selector.js"></script>
+    <script type="module" src="assets/js/fillTables.js"></script>
+    <script type="module" src="assets/js/fillCompareTables.js"></script>
+
+</body>
+
+</html>
