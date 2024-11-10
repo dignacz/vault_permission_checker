@@ -21,18 +21,56 @@ document
             alert('Error: User ID 2 to compare is required for this action.');
             return; // Stop form submission if userIdCompare is empty
         }
-        
+
         // Check if userId and userIdCompare have the same value
-        if (userIdInput === userIdCompareInput) {
-            alert('Error: User ID and User ID 2 to compare cannot be the same.');
-            return; // Stop form submission if they are the same
-        }
+    if (userIdInput === userIdCompareInput) {
+        alert('Error: User ID and User ID 2 cannot be the same.');
+        return; // Stop form submission if they are the same
+    }
     }
 
     //GET PERMISSIONS BUTTON
     if (submitter.id === "submitButton") {
 
-    
+//CLEAR THE COMPARE TABLE IF THERE ARE VALUES
+
+
+
+function clearTables() {
+    // Get the table elements by their IDs
+    const userCompareTable = document.getElementById("userCompareTable");
+    const objectCompareTable = document.getElementById("objectCompareTable");
+    const fieldsCompareTable = document.getElementById("fieldsCompareTable");
+  
+    // Clear the content of each table (remove all rows except the header)
+    if (userCompareTable) {
+      const userRows = userCompareTable.getElementsByTagName("tr");
+      // Loop through the rows in the table and remove them (except the header row)
+      for (let i = userRows.length - 1; i >= 1; i--) {
+        userCompareTable.deleteRow(i);
+      }
+    }
+  
+    if (objectCompareTable) {
+      const objectRows = objectCompareTable.getElementsByTagName("tr");
+      // Loop through the rows in the table and remove them (except the header row)
+      for (let i = objectRows.length - 1; i >= 1; i--) {
+        objectCompareTable.deleteRow(i);
+      }
+    }
+  
+    if (fieldsCompareTable) {
+      const fieldsRows = fieldsCompareTable.getElementsByTagName("tr");
+      // Loop through the rows in the table and remove them (except the header row)
+      for (let i = fieldsRows.length - 1; i >= 1; i--) {
+        fieldsCompareTable.deleteRow(i);
+      }
+    }
+  }
+
+  clearTables();  // Clear all 3 tables
+
+
       // Get the loading icon and submit button elements
       const loadingIcon = document.getElementById("loadingIcon");
       const submitButton = document.getElementById("submitButton");
@@ -42,7 +80,7 @@ document
       submitButton.disabled = true;
 
       try {
-        getPermissionData();
+        await getPermissionData();
 
       } catch (error) {
         console.error("Error:", error);
@@ -51,7 +89,7 @@ document
       //USER DATA
 
       try {
-        getUserData();
+        await getUserData();
       } catch (error) {
         console.error("Error:", error);
       } finally {
@@ -63,8 +101,6 @@ document
 //COMPARE PERMISSIONS BUTTON
 
     } else if (submitter.id === "submitButtonCompare") {
-
-        console.log("Compare function coming soon!");
     
 
       // Get the loading icon and submit button elements
@@ -148,8 +184,7 @@ document
       const objectNamesDropdown = document.getElementById("objectNames");
 
       // Clear previous options
-      objectNamesDropdown.innerHTML =
-        '<option value="">-- Select an Object --</option>';
+      objectNamesDropdown.innerHTML ='';
 
       objectNames.forEach((name) => {
         const option = document.createElement("option");
@@ -158,78 +193,88 @@ document
         objectNamesDropdown.appendChild(option);
       });
 
-      // Attach the event listener to the dropdown to trigger populateTables on change
-      objectNamesDropdown.addEventListener("change", populateTables);
+          // Set the first item as the default selected option if objectNames is not empty
+if (objectNames.length > 0) {
+    objectNamesDropdown.value = objectNames[0];
+  }
 
-      // Function to populate both Object and Field Permissions tables based on the selected object
+  populateTables(objectNames[0]);
+
+      // Attach the event listener to the dropdown to trigger populateTables on change only if the user table is populated
+      const userCompareTable = document.getElementById("userCompareTable");
+if (userCompareTable) {
+    objectNamesDropdown.addEventListener("change", populateTables);
+}
+
+
       function populateTables() {
         const selectedObject = objectNamesDropdown.value;
-
+    
         // Populate Object Permissions Table
         const objectTableBody = document
           .getElementById("objectCompareTable")
           .getElementsByTagName("tbody")[0];
         objectTableBody.innerHTML = ""; // Clear previous rows
-
+    
         if (objectMap[selectedObject]) {
           objectMap[selectedObject].forEach((objectTP) => {
             const row = document.createElement("tr");
-
+    
             // Add Object Type Cell (the fieldName when it's an object type)
             const objectTypeCell = document.createElement("td");
             objectTypeCell.textContent = objectTP.objectType || "N/A";
             row.appendChild(objectTypeCell);
-
+    
             // Read permissions cell
             const readCell = document.createElement("td");
             readCell.textContent = objectTP.read ? "X" : "";
             row.appendChild(readCell);
-
+    
             // Create permissions cell
             const createCell = document.createElement("td");
             createCell.textContent = objectTP.create ? "X" : "";
             row.appendChild(createCell);
-
+    
             // Update permissions cell
             const updateCell = document.createElement("td");
             updateCell.textContent = objectTP.edit ? "X" : "";
             row.appendChild(updateCell);
-
+    
             // Delete permissions cell
             const deleteCell = document.createElement("td");
             deleteCell.textContent = objectTP.delete ? "X" : "";
             row.appendChild(deleteCell);
-
+    
             // Append the row to the Object Permissions table
             objectTableBody.appendChild(row);
           });
         }
-
+    
         // Populate Field Permissions Table
         const fieldsTableBody = document
           .getElementById("fieldsCompareTable")
           .getElementsByTagName("tbody")[0];
         fieldsTableBody.innerHTML = ""; // Clear previous rows
-
+    
         if (fieldMap[selectedObject]) {
           fieldMap[selectedObject].forEach((field) => {
             const row = document.createElement("tr");
-
+    
             // Field Name Cell
             const fieldNameCell = document.createElement("td");
             fieldNameCell.textContent = field.fieldName;
             row.appendChild(fieldNameCell);
-
+    
             // Read Permission Cell
             const readCell = document.createElement("td");
             readCell.textContent = field.read ? "X" : "";
             row.appendChild(readCell);
-
+    
             // Edit Permission Cell
             const editCell = document.createElement("td");
             editCell.textContent = field.edit ? "X" : "";
             row.appendChild(editCell);
-
+    
             // Append row to Field Permissions table
             fieldsTableBody.appendChild(row);
           });
@@ -309,12 +354,11 @@ document
 //GET PERMISSIONS FOR FIRST USER FUNCTION
 
 async function getPermissionData() {
-    // Get values from the form
     const sessionId = document.getElementById("sessionId").value;
     const dns = document.getElementById("dns").value;
     const apiVersion = document.getElementById("apiVersion").value;
     const userId = document.getElementById("userId").value;
-    //const userIdCompare = document.getElementById("userIdCompare").value;
+
     // Send POST request to Express server's proxy endpoint
     const response = await fetch("/api/proxy", {
         method: "POST",
@@ -380,8 +424,7 @@ async function getPermissionData() {
       const objectNamesDropdown = document.getElementById("objectNames");
 
       // Clear previous options
-      objectNamesDropdown.innerHTML =
-        '<option value="">-- Select an Object --</option>';
+      objectNamesDropdown.innerHTML ='';
 
       objectNames.forEach((name) => {
         const option = document.createElement("option");
@@ -390,78 +433,84 @@ async function getPermissionData() {
         objectNamesDropdown.appendChild(option);
       });
 
+      // Set the first item as the default selected option if objectNames is not empty
+if (objectNames.length > 0) {
+    objectNamesDropdown.value = objectNames[0];
+    // Call populateTables
+  }
+populateTables(objectNames[0]);
+
       // Attach the event listener to the dropdown to trigger populateTables on change
       objectNamesDropdown.addEventListener("change", populateTables);
 
-      // Function to populate both Object and Field Permissions tables based on the selected object
       function populateTables() {
         const selectedObject = objectNamesDropdown.value;
-
+    
         // Populate Object Permissions Table
         const objectTableBody = document
           .getElementById("objectTable")
           .getElementsByTagName("tbody")[0];
         objectTableBody.innerHTML = ""; // Clear previous rows
-
+    
         if (objectMap[selectedObject]) {
           objectMap[selectedObject].forEach((objectTP) => {
             const row = document.createElement("tr");
-
+    
             // Add Object Type Cell (the fieldName when it's an object type)
             const objectTypeCell = document.createElement("td");
             objectTypeCell.textContent = objectTP.objectType || "N/A";
             row.appendChild(objectTypeCell);
-
+    
             // Read permissions cell
             const readCell = document.createElement("td");
             readCell.textContent = objectTP.read ? "X" : "";
             row.appendChild(readCell);
-
+    
             // Create permissions cell
             const createCell = document.createElement("td");
             createCell.textContent = objectTP.create ? "X" : "";
             row.appendChild(createCell);
-
+    
             // Update permissions cell
             const updateCell = document.createElement("td");
             updateCell.textContent = objectTP.edit ? "X" : "";
             row.appendChild(updateCell);
-
+    
             // Delete permissions cell
             const deleteCell = document.createElement("td");
             deleteCell.textContent = objectTP.delete ? "X" : "";
             row.appendChild(deleteCell);
-
+    
             // Append the row to the Object Permissions table
             objectTableBody.appendChild(row);
           });
         }
-
+    
         // Populate Field Permissions Table
         const fieldsTableBody = document
           .getElementById("fieldsTable")
           .getElementsByTagName("tbody")[0];
         fieldsTableBody.innerHTML = ""; // Clear previous rows
-
+    
         if (fieldMap[selectedObject]) {
           fieldMap[selectedObject].forEach((field) => {
             const row = document.createElement("tr");
-
+    
             // Field Name Cell
             const fieldNameCell = document.createElement("td");
             fieldNameCell.textContent = field.fieldName;
             row.appendChild(fieldNameCell);
-
+    
             // Read Permission Cell
             const readCell = document.createElement("td");
             readCell.textContent = field.read ? "X" : "";
             row.appendChild(readCell);
-
+    
             // Edit Permission Cell
             const editCell = document.createElement("td");
             editCell.textContent = field.edit ? "X" : "";
             row.appendChild(editCell);
-
+    
             // Append row to Field Permissions table
             fieldsTableBody.appendChild(row);
           });
@@ -530,4 +579,3 @@ async function getUserData() {
       // Append the row to the table body
       userTableBody.appendChild(row);
 }
-
