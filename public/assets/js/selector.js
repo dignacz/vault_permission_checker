@@ -1,4 +1,4 @@
-// main.js
+//This script is for the object selector to fill the two tables in the compare page simultenaously
 
 import { populateObjectPermissionsTable, populateFieldPermissionsTable } from './fillTables.js';
 import { populateCompareObjectPermissionsTable, populateCompareFieldPermissionsTable } from './fillCompareTables.js';

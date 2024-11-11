@@ -21,10 +21,10 @@ document.getElementById('apiForm').addEventListener('submit', async function(eve
         }
 
         // Check if userId and userIdCompare have the same value
-    if (userIdInput === userIdCompareInput) {
-        alert('Error: User ID and User ID 2 cannot be the same.');
-        return; // Stop form submission if they are the same
-    }
+        if (userIdInput === userIdCompareInput) {
+            alert('Error: User ID and User ID 2 cannot be the same.');
+            return; // Stop form submission if they are the same
+        }
 
         try {
             // Send POST request to Express server's proxy endpoint

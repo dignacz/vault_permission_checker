@@ -1,10 +1,27 @@
 document.getElementById('apiForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
+    //Submitter  to differentiate if it's the 'Get Permissions' button or the 'Compare Permissions'
+    const submitter = event.submitter;
+    const userIdInput = document.getElementById('userId').value;
+    const userIdCompareInput = document.getElementById('userIdCompare').value;
+
     // Get the loading icon and submit button elements
     const loadingIcon = document.getElementById("loadingIcon");
     const submitButton = document.getElementById("submitButton");
     const submitButtonCompare = document.getElementById("submitButtonCompare");
+
+    if (submitter.id === 'submitButtonCompare') {
+
+        if (!userIdCompareInput) {
+            return; // Stop form submission if userIdCompare is empty
+        }
+
+        // Check if userId and userIdCompare have the same value
+        if (userIdInput === userIdCompareInput) {
+            return; // Stop form submission if they are the same
+        }
+    }
 
     // Show the loading icon and disable the submit button
     loadingIcon.style.display = "inline";
@@ -96,7 +113,6 @@ document.getElementById('apiForm').addEventListener('submit', async function(eve
         sessionStorage.setItem('userData', JSON.stringify(userData));
 
         //Check which button was clicked
-        const submitter = event.submitter;
         if (submitter.id === 'submitButton') {
             // Check if the data is stored before redirecting
         if (sessionStorage.getItem('permissionsData') && sessionStorage.getItem('userData')) {
