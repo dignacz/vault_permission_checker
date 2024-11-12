@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>permission-checker-home-page-compare-table</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div>
+        <div class="background-color">
+            <div>
+                <a id="scroll-to-top"></a>
+            </div>
+            <div class="go-back-margin">
+                <a href="/" class="go-back-anchor">
+                <button class="go-back"><span class="go-back-icn-size"><img src="/assets/img/chevron-double-left.svg"></span>Switch User</button>
+                </a>
+            </div>
+            <div class="container div-center-block mb-5">
+                <h1 class="h5">User Info</h1>
+                <div class="table-responsive">
+                    <table class="table brand-color" id="userTable">
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>User Name</th>
+                                <th>Email</th>
+                                <th>Security Profile</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="mb-5"><label class="form-label" for="objectNames">Select an Object</label><select id="objectNames" class="drop-down-margin-left">
+                <optgroup label="Objects List">
+                    <option value="" selected="">-- Select an Object --</option>
+                </optgroup>
+            </select></div>
+            <div class="container div-center-block mb-5 m-t-0-override">
+                <h1 class="h5">Object-Level Permissions</h1>
+                <div class="table-responsive">
+                    <table class="table brand-color" id="objectTable">
+                        <thead>
+                            <tr>
+                                <th>Object Types</th>
+                                <th>Read</th>
+                                <th>Create</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="container div-center-block mb-5 m-t-0-override">
+                <h1 class="h5">Field-Level Permissions</h1>
+                <div class="table-responsive">
+                    <table class="table brand-color" id="fieldsTable">
+                        <thead>
+                            <tr>
+                                <th>Field Name</th>
+                                <th>Read</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="scroll-to-top">
+                <a href="#scroll-to-top">
+                <button class="scroll-to-top-btn"><span class="scroll-to-top-icn"><img src="/assets/img/chevron-double-up.svg"></span></button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="module" src="assets/js/fillTables.js"></script>
+</body>
+
+</html>
