@@ -22,6 +22,13 @@ app.get("/permission-check", (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'user-permissions.html'));
 });
 
+//Redirect to My Permissions Page
+app.get("/my-permissions", (req, res) => {
+
+  // Send the user-permissions.html file
+  res.sendFile(path.join(__dirname, 'public', 'user-permissions.html'));
+});
+
 //Redirect to Permission check Page
 app.get("/comparison-check", (req, res) => {
 

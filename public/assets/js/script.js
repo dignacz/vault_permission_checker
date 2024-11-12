@@ -10,16 +10,23 @@ document.getElementById('apiForm').addEventListener('submit', async function(eve
     const loadingIcon = document.getElementById("loadingIcon");
     const submitButton = document.getElementById("submitButton");
     const submitButtonCompare = document.getElementById("submitButtonCompare");
+    const submitMyPermission = document.getElementById("submitMyPermission");
 
     if (submitter.id === 'submitButtonCompare') {
 
-        if (!userIdCompareInput) {
-            return; // Stop form submission if userIdCompare is empty
+        if (!userIdCompareInput || !userIdInput) {
+            return; // Stop form submission if at least one of the user fields are empty
         }
 
         // Check if userId and userIdCompare have the same value
         if (userIdInput === userIdCompareInput) {
             return; // Stop form submission if they are the same
+        }
+    } else if (submitter.id === 'submitButton') {
+        
+        if (!userIdInput) {
+            alert('Error: User ID is required for this action.');
+            return; // Stop form submission if the User ID is empty
         }
     }
 
@@ -27,12 +34,20 @@ document.getElementById('apiForm').addEventListener('submit', async function(eve
     loadingIcon.style.display = "inline";
     submitButton.disabled = true;
     submitButtonCompare.disabled = true;
+    submitMyPermission.disabled = true;
 
     // Get values from the form
     const sessionId = document.getElementById('sessionId').value;
     const dns = document.getElementById('dns').value;
     const apiVersion = document.getElementById('apiVersion').value;
-    const userId = document.getElementById('userId').value;
+
+    let userId;
+    //For "Show my Permission", the userId should be "me" to correctly call the API
+    if (submitter.id === 'submitMyPermission') {
+        userId = "me";
+    } else {
+        userId = document.getElementById('userId').value;
+    }
 
     try {
         // Send POST request to the API proxy endpoint
@@ -121,8 +136,15 @@ document.getElementById('apiForm').addEventListener('submit', async function(eve
         } else {
             console.error('Error: Data not stored correctly.');
         }
-        } 
-        
+        } else if (submitter.id === 'submitMyPermission') {
+            // Check if the data is stored before redirecting
+        if (sessionStorage.getItem('permissionsData') && sessionStorage.getItem('userData')) {
+            // Data is successfully stored, now redirect
+            window.location.href = '/my-permissions';
+        } else {
+            console.error('Error: Data not stored correctly.');
+        }
+    } 
     } catch (error) {
         console.error('Error:', error);
     } finally {
@@ -130,6 +152,7 @@ document.getElementById('apiForm').addEventListener('submit', async function(eve
         loadingIcon.style.display = "none";
         submitButton.disabled = false;
         submitButtonCompare.disabled = false;
+        submitMyPermission.disabled = false;
     }
 });
 

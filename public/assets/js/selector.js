@@ -17,10 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (Array.isArray(objectNames) && objectNames.length) {
       // Populate dropdown options
       objectNamesDropdown.innerHTML = "";
-      const defaultOption = document.createElement("option");
-      defaultOption.value = "";
-      defaultOption.textContent = "Select an Object";
-      objectNamesDropdown.appendChild(defaultOption);
 
       objectNames.forEach((name, index) => {
         const option = document.createElement("option");

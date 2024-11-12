@@ -19,8 +19,8 @@
                     <form id="apiForm">
                         <div class="mb-3"><label class="form-label" for="sessionId">Session Id<span class="mandatory">&nbsp;*</span></label><input class="form-control" type="text" id="sessionId" name="sessionId" required></div>
                         <div class="mb-3"><label class="form-label" for="dns">Vault DNS<span class="mandatory">&nbsp;*</span></label><input class="form-control" type="text" id="dns" name="dns" required></div>
-                        <div class="mb-3"><label class="form-label" for="userId">User Id<span class="mandatory">&nbsp;*</span></label><input class="form-control" type="text" id="userId" name="userId" required></div>
-                        <div class="mb-3"><label class="form-label" for="userIdCompare">User Id 2 to Compare (Optional)</label><input class="form-control" type="text" id="userIdCompare" name="userIdCompare"></div>
+                        <div class="mb-3"><label class="form-label" for="userId">User Id<span class="semi-mandatory">&nbsp;*<span style="color: #7f8c8d;">&nbsp;for "Get Permissions"</span></span></label><input class="form-control" type="text" id="userId" name="userId"></div>
+                        <div class="mb-3"><label class="form-label" for="userIdCompare">User Id 2 to Compare<span class="semi-mandatory">&nbsp;*<span style="color: #7f8c8d;">&nbsp;for "Compare Permissions"</span></span></label><input class="form-control" type="text" id="userIdCompare" name="userIdCompare"></div>
                         <div class="mb-5"><label class="form-label" for="apiVersion"><span style="color: rgb(0, 0, 0);">API Version</span><span class="mandatory">&nbsp;*</span></label><select class="form-select" id="apiVersion" name="apiVersion">
                                 <optgroup label="API Versions">
                                     <option value="v24.2" selected="v24.2">v24.2</option>
@@ -32,7 +32,9 @@
                                     <option value="v24.1">v22.2</option>
                                     <option value="v24.1">v22.1</option>
                                 </optgroup>
-                            </select></div><button class="btn btn-color" id="submitButton" type="submit">Get Permissions</button><button class="btn btn-color drop-down-margin-left" id="submitButtonCompare" type="submit">Compare Permissions</button>
+                            </select></div><button class="btn btn-color" id="submitButton" type="submit">Get Permissions</button>
+                            <button class="btn btn-color drop-down-margin-left" id="submitButtonCompare" type="submit">Compare Permissions</button>
+                            <button class="btn btn-color drop-down-margin-left" id="submitMyPermission" type="submit">Show My Permissions</button>
                             <span id="loadingIcon" style="display: none; margin-left: 10px;">
                                 <img src="/assets/img/loading-gif.gif" style="width: 20px;">
                             </span>
@@ -44,6 +46,7 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/scriptCompare.js"></script>
+    <script src="assets/js/keepInputData.js"></script>
 
 </body>
 

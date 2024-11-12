@@ -15,9 +15,9 @@ document.getElementById('apiForm').addEventListener('submit', async function(eve
     
     if (submitter.id === 'submitButtonCompare') {
 
-        if (!userIdCompareInput) {
-            alert('Error: User ID 2 to compare is required for this action.');
-            return; // Stop form submission if userIdCompare is empty
+        if (!userIdCompareInput || !userIdInput) {
+            alert('Error: User IDs to compare are required for this action.');
+            return; // Stop form submission if at least one of the user fields are empty
         }
 
         // Check if userId and userIdCompare have the same value

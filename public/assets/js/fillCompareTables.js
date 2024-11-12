@@ -17,12 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Clear previous options
             objectNamesDropdown.innerHTML = '';
 
-            // Add an initial empty option to the dropdown
-            const defaultOption = document.createElement("option");
-            defaultOption.value = "";
-            defaultOption.textContent = "Select an Object";
-            objectNamesDropdown.appendChild(defaultOption);
-
             // Populate the dropdown with object names
             objectNames.forEach((name, index) => {
                 const option = document.createElement("option");
