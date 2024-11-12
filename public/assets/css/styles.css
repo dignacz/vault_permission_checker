@@ -7,7 +7,7 @@ body {
 
 .div-center-block {
   margin-top: 10%;
-  width: 60%;
+  width: 50%;
   height: 50%;
 }
 
@@ -29,6 +29,7 @@ h1 {
   border-radius: 20px;
   color: white;
   background-color: #f7981d;
+  font-size: 14px;
 }
 
 .btn-color:hover {
@@ -48,15 +49,29 @@ h1 {
 .h5 {
   color: #f7981d;
   margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.m-t-10 {
+  margin-top: 10%;
 }
 
 .m-t-0-override {
   margin-top: 0% !important;
 }
 
+.w-40-override {
+  width: 40%;
+}
+
 th {
   background-color: #f7981d !important;
   color: white !important;
+  font-size: 13px;
+}
+
+tr {
+  font-size: 13px;
 }
 
 table tr:nth-child(even) td {
@@ -69,4 +84,57 @@ table td:nth-child(even) {
 
 table td:nth-child(odd) {
   border: 0.1px solid rgb(176, 176, 176);
+}
+
+.go-back-anchor {
+  color: #f7981d;
+  text-decoration: none;
+}
+
+.go-back-anchor:hover {
+  color: white;
+}
+
+.go-back {
+  background-color: transparent;
+  border: 1px solid #f7981d;
+  font-size: 14px;
+  color: #f7981d;
+  padding: 4px;
+}
+
+.go-back:hover {
+  color: white;
+  background-color: #f7981d;
+}
+
+.go-back-margin {
+  margin: 20px;
+  text-align: left;
+}
+
+.go-back-icn-size {
+  display: block;
+  float: left;
+  margin-right: 4px;
+}
+
+.scroll-to-top {
+  margin: 20px;
+  text-align: left;
+}
+
+.scroll-to-top-btn {
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #f7981d;
+}
+
+.scroll-to-top-btn:hover {
+  background-color: #f7981d;
+}
+
+.scroll-to-top-icn {
+  display: block;
+  margin: 5px;
 }

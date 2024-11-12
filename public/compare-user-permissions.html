@@ -12,48 +12,69 @@
 <body>
     <div>
         <div class="background-color">
-            <div id="firstTable" class="container div-center-block mb-5">
-                <h1 class="h5">User Info</h1>
-                <div class="table-responsive" id="userTable">
-                    <table class="table brand-color">
-                        <thead>
-                            <tr>
-                                <th>Full Name</th>
-                                <th>User Name</th>
-                                <th>Email</th>
-                                <th>Security Profile</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+            <div>
+                <a id="scroll-to-top"></a>
+            </div>
+            <div class="go-back-margin">
+                <a href="/" class="go-back-anchor">
+                <button class="go-back"><span class="go-back-icn-size"><img src="/assets/img/chevron-double-left.svg"></span>Switch User</button>
+                </a>
+            </div>
+            <div class="container-fluid m-t-10">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div id="firstTable" class="mb-5">
+                            <h1 class="h5">User Info</h1>
+                            <div class="table-responsive" id="userTable">
+                                <table class="table brand-color">
+                                    <thead>
+                                        <tr>
+                                            <th>Full Name</th>
+                                            <th>User Name</th>
+                                            <th>Email</th>
+                                            <th>Security Profile</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+                        <div id="compareTable" class="mb-5">
+                            <h1 class="h5">Compared User Info</h1>
+                            <div class="table-responsive" id="userCompareTable">
+                                <table class="table brand-color">
+                                    <thead>
+                                        <tr>
+                                            <th>Full Name</th>
+                                            <th>User Name</th>
+                                            <th>Email</th>
+                                            <th>Security Profile</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
-            <div id="compareTable" class="container div-center-block mb-5 m-t-0-override">
-                <h1 class="h5">Compared User Info</h1>
-                <div class="table-responsive" id="userCompareTable">
-                    <table class="table brand-color">
-                        <thead>
-                            <tr>
-                                <th>Full Name</th>
-                                <th>User Name</th>
-                                <th>Email</th>
-                                <th>Security Profile</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="mb-5"><label class="form-label" for="objectNames">Select an Object</label><select id="objectNames" class="drop-down-margin-left">
+            
+            
+            <div class="container div-center-block mb-5 m-t-0-override"><label class="form-label" for="objectNames">Select an Object</label><select id="objectNames" class="drop-down-margin-left">
                 <optgroup label="Objects List">
                     <option value="" selected="">-- Select an Object --</option>
                 </optgroup>
             </select></div>
-            <div>
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col">
-                        <div>
-                            <div class="container mb-5">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="mb-5">
                                 <h1 class="h5">Object-Level Permissions</h1>
                                 <div class="table-responsive" id="objectTable">
                                     <table class="table brand-color">
@@ -70,7 +91,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="container mb-5">
+                            <div class="mb-5">
                                 <h1 class="h5">Field-Level Permissions</h1>
                                 <div class="table-responsive" id="fieldsTable">
                                     <table class="table brand-color">
@@ -84,12 +105,11 @@
                                         <tbody></tbody>
                                     </table>
                                 </div>
-                            </div>
-                        </div>
+                            </div>       
                     </div>
-                    <div class="col">
-                        <div>
-                            <div class="container mb-5">
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="mb-5">
                                 <h1 class="h5">Object-Level Permissions Comparison</h1>
                                 <div class="table-responsive" id="objectCompareTable">
                                     <table class="table brand-color">
@@ -106,7 +126,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="container mb-5">
+                            <div class="mb-5">
                                 <h1 class="h5">Field-Level Permissions Comparison</h1>
                                 <div class="table-responsive" id="fieldsCompareTable">
                                     <table class="table brand-color">
@@ -120,10 +140,14 @@
                                         <tbody></tbody>
                                     </table>
                                 </div>
-                            </div>
-                        </div>
+                            </div>   
                     </div>
                 </div>
+            </div>
+            <div class="scroll-to-top">
+                <a href="#scroll-to-top">
+                <button class="scroll-to-top-btn"><span class="scroll-to-top-icn"><img src="/assets/img/chevron-double-up.svg"></span></button>
+                </a>
             </div>
         </div>
     </div>
