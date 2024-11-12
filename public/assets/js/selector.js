@@ -50,9 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
         populateCompareObjectPermissionsTable(defaultObject, objectMapCompare);
         populateCompareFieldPermissionsTable(defaultObject, fieldMapCompare);
 
-        // Run comparison highlighting only
-        highlightDifferences("objectCompareTable", objectMap[defaultObject], objectMapCompare[defaultObject], ["read", "create", "edit", "delete"], 1);
-        highlightDifferences("fieldsCompareTable", fieldMap[defaultObject], fieldMapCompare[defaultObject], ["read", "edit"], 1);
+        // Apply comparison highlights for object permissions if data exists
+        if (objectMap[defaultObject] && objectMap[defaultObject].length > 0) {
+            highlightDifferences("objectCompareTable", objectMap[defaultObject], objectMapCompare[defaultObject], ["read", "create", "edit", "delete"], 1);
+            }
+            // Always apply comparison highlights for field permissions
+            highlightDifferences("fieldsCompareTable", fieldMap[defaultObject], fieldMapCompare[defaultObject], ["read", "edit"], 1);
       }
 
       // Listen for dropdown changes to update both table sets and highlight differences
