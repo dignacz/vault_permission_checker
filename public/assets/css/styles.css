@@ -142,3 +142,27 @@ table td:nth-child(odd) {
   display: block;
   margin: 5px;
 }
+
+.expand-button {
+  border-radius: 20%; 
+  background-color: transparent;
+  border: 1.5px solid #f7981d;
+  padding: 0.5px 0.5px;
+}
+
+.expand-button:hover {
+  background-color: #fb8e02;
+  border: 1.5px solid #fb8e02;
+}
+
+.expand-button-font {
+  font-size: 14px;
+}
+
+.expand-button-content-align {
+  text-align: left;
+}
+
+.expand-button-mt {
+  margin-top: 2.5rem !important;
+}

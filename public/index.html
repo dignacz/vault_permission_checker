@@ -19,9 +19,9 @@
                     <form id="apiForm">
                         <div class="mb-3"><label class="form-label" for="sessionId">Session Id<span class="mandatory">&nbsp;*</span></label><input class="form-control" type="text" id="sessionId" name="sessionId" required></div>
                         <div class="mb-3"><label class="form-label" for="dns">Vault DNS<span class="mandatory">&nbsp;*</span></label><input class="form-control" type="text" id="dns" name="dns" required></div>
-                        <div class="mb-3"><label class="form-label" for="userId">User Id<span class="semi-mandatory">&nbsp;*<span style="color: #7f8c8d;">&nbsp;for "Get Permissions"</span></span></label><input class="form-control" type="text" id="userId" name="userId"></div>
-                        <div class="mb-3"><label class="form-label" for="userIdCompare">User Id 2 to Compare<span class="semi-mandatory">&nbsp;*<span style="color: #7f8c8d;">&nbsp;for "Compare Permissions"</span></span></label><input class="form-control" type="text" id="userIdCompare" name="userIdCompare"></div>
-                        <div class="mb-5"><label class="form-label" for="apiVersion"><span style="color: rgb(0, 0, 0);">API Version</span><span class="mandatory">&nbsp;*</span></label><select class="form-select" id="apiVersion" name="apiVersion">
+                        <div class="mb-3"><label class="form-label" for="userId">User Id<span class="mandatory">&nbsp;*</span></label><input class="form-control" type="text" id="userId" name="userId"></div>
+                        <div class="mb-3"><label class="form-label" for="userIdCompare">User Id 2 to Compare</label><input class="form-control" type="text" id="userIdCompare" name="userIdCompare"></div>
+                        <div class="mb-5"><label class="form-label" for="apiVersion">API Version</label><select class="form-select" id="apiVersion" name="apiVersion">
                                 <optgroup label="API Versions">
                                     <option value="v24.2" selected="v24.2">v24.2</option>
                                     <option value="v24.1">v24.1</option>
@@ -41,6 +41,27 @@
                     </form>
                 </div>
             </div>
+
+            <div class="container expand-button-mt w-40-override mb-5">
+                <p class="expand-button-font">
+
+                    <button class="expand-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExpand" aria-expanded="false" aria-controls="collapseExpand">
+                        <span><img src="/assets/img/plus-lg.svg"></span>
+                    </button>
+
+                    &nbsp;Expand to find the required fields to enter for different permissions options.<span class="mandatory">&nbsp;*</span>
+                </p>      
+                      <div class="collapse" id="collapseExpand">
+                        <div class="card card-body expand-button-content-align">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><b>Get Permissions:</b> Session Id, Vault DNS, User Id.</li>
+                                <li class="list-group-item"><b>Compare Permissions:</b> Session Id, Vault DNS, User Id, User Id 2 to Compare.</li>
+                                <li class="list-group-item"><b>Show My Permissions:</b> Session Id, Vault DNS.</li>
+                              </ul>
+                        </div>
+                      </div>   
+            </div>
+
         </div>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
